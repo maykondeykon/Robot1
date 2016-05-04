@@ -22,7 +22,15 @@ public class Main {
 			System.out.println("vazio");
 		}
 		
-		System.out.println(matrix.getPosicaoRobo()[1]);
+//		System.out.println(matrix.getPosicaoRobo()[1]);
+		
+		Matrix m2 = new Matrix(5, 5);
+		
+		Celula c3 = new Celula();
+		c3.setItem(new Caixa());
+		m2.setCelula(c3, 1, 2);
+		
+		matrix.igual(m2);
 		
 
 	}
