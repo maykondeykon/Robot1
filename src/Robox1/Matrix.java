@@ -59,11 +59,13 @@ public class Matrix implements Estado{
 
 	@Override
 	public boolean igual(Estado e) {
-		boolean assert1 = e.estadoValido();
+		boolean assert1 = e.estadoValido(); //se é válido
 		boolean assert2 = false;
 		boolean assert3 = false;
+		int totalItens = 0;
+		int itensIguais = 0;
 		
-		if (assert1) {
+		if (assert1) { // se tem o mesmo tamanho
 			int xL = ((Matrix) e).getX();
 			int yL = ((Matrix) e).getY();
 			if ((xL == this.getX()) && (yL == this.getY()) ) {
@@ -71,21 +73,34 @@ public class Matrix implements Estado{
 			}
 		}
 		
-		if (assert1 && assert2) {
-			System.out.println("mesmo tamanho");
+		if (assert1 && assert2) { // se possuem os mesmos itens
+//			System.out.println("mesmo tamanho");
 			
 			for (int i = 0; i < this.getX(); i++) {
 				for (int j = 0; j < this.getY(); j++) {
-					if ((this.getCelula(i, j) != null) && (((Matrix) e).getCelula(i, j) != null)) {
-						System.out.println(this.getCelula(i, j).getItem() + " - posição ["+ i +","+ j+"]");
-						System.out.println(this.getCelula(i, j).getItem().getClass() == (((Matrix) e).getCelula(i, j).getItem().getClass()));
+					if (this.getCelula(i, j) != null) {
+						totalItens++;
+						if (((Matrix) e).getCelula(i, j) != null) {
+							if (this.getCelula(i, j).getItem().getClass() == (((Matrix) e).getCelula(i, j).getItem().getClass())) {
+//								System.out.println(this.getCelula(i, j).getItem() + " - posição ["+ i +","+ j+"]");
+								itensIguais++;
+							}
+						}
 					}
-					
 				}
 			}
 			
+			assert3 = (totalItens == itensIguais);		
+			
 		}else {
-			System.out.println("tamanhos diferentes");
+			assert3 = false;
+		}
+		
+//		System.out.println("Total itens = "+totalItens+" itens iguais = "+itensIguais);
+//		System.out.println(assert3);
+		
+		if (assert1 && assert2 && assert3) {
+			return true;
 		}
 		
 		return false;

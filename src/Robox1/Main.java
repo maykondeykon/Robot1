@@ -30,7 +30,11 @@ public class Main {
 		c3.setItem(new Caixa());
 		m2.setCelula(c3, 1, 2);
 		
-		matrix.igual(m2);
+		Celula c4 = new Celula();
+		c4.setItem(new Robo());
+//		m2.setCelula(c4,2,2);
+		
+		System.out.println(matrix.igual(m2));
 		
 
 	}
